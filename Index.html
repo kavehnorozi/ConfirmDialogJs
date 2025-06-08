@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reusable Confirm Dialog Component</title>
+    <link rel="stylesheet" href="confirm-modal.css">
+
+</head>
+<body>
+    <!-- Demo Content -->
+    <div class="demo-container">
+        <h1>Reusable Confirm Dialog Component</h1>
+        <p>Click the buttons below to test different confirm dialog configurations:</p>
+        
+        <button class="demo-button" onclick="showBasicConfirm()">Basic Confirm</button>
+        <button class="demo-button" onclick="showDeleteConfirm()">Delete Confirmation</button>
+        <button class="demo-button" onclick="showCustomConfirm()">Custom Confirm</button>
+        <button class="demo-button" onclick="showLongMessageConfirm()">Long Message</button>
+        
+        <div id="result" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; display: none;">
+            <strong>Result:</strong> <span id="result-text"></span>
+        </div>
+    </div>
+
+
+<script src="confirm-modal.js"></script>
+    <script>
+        // Create global instance
+        const confirmDialog = new ConfirmDialog();
+        
+        // Global function to show confirm dialog
+        function showConfirm(options) {
+            confirmDialog.show(options);
+        }
+        
+        // Demo functions
+        function showResult(message) {
+            const resultDiv = document.getElementById('result');
+            const resultText = document.getElementById('result-text');
+            resultText.textContent = message;
+            resultDiv.style.display = 'block';
+            setTimeout(() => {
+                resultDiv.style.display = 'none';
+            }, 3000);
+        }
+        
+        function showBasicConfirm() {
+            showConfirm({
+                title: 'Basic Confirmation',
+                message: 'Do you want to proceed with this action?',
+                onConfirm: () => showResult('User confirmed the basic action'),
+                onCancel: () => showResult('User cancelled the basic action')
+            });
+        }
+        
+        function showDeleteConfirm() {
+            showConfirm({
+                title: 'Delete Item',
+                message: 'Are you sure you want to delete this item? This action cannot be undone.',
+                confirmText: 'Delete',
+                cancelText: 'Keep',
+                danger: true,
+                onConfirm: () => showResult('Item deleted successfully'),
+                onCancel: () => showResult('Delete action cancelled')
+            });
+        }
+        
+        function showCustomConfirm() {
+            showConfirm({
+                title: 'Custom Dialog',
+                message: 'This is a custom confirmation dialog with different button texts.',
+                confirmText: 'Yes, Do It!',
+                cancelText: 'No, Thanks',
+                onConfirm: () => showResult('Custom action confirmed'),
+                onCancel: () => showResult('Custom action declined')
+            });
+        }
+        
+        function showLongMessageConfirm() {
+            showConfirm({
+                title: 'Important Notice',
+                message: 'This is a longer message to demonstrate how the dialog handles more content. The dialog will automatically adjust its height and remain centered on the screen. You can still use all the same functionality including keyboard navigation and focus trapping.',
+                confirmText: 'I Understand',
+                cancelText: 'Cancel',
+                onConfirm: () => showResult('Long message acknowledged'),
+                onCancel: () => showResult('Long message dismissed')
+            });
+        }
+    </script>
+</body>
+</html>
