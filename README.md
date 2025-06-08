@@ -32,13 +32,13 @@ A lightweight and modern reusable confirm dialog modal built with vanilla JavaSc
 Coming soon on NPM!
 
 ```bash
-npm install reusable-confirm-dialog
+npm install ConfirmDialogJs
 ```
 
 Or if publishing to NuGet (for Blazor or ASP.NET use):
 
 ```bash
-dotnet add package ReusableConfirmDialog
+dotnet add package ConfirmDialogJs
 ```
 
 ## 🛠️ Usage
