@@ -15,9 +15,8 @@ A lightweight and modern reusable confirm dialog modal built with vanilla JavaSc
 
 ## 🚀 Demo
 
-![Preview](./screenshot.png)
 
-[View Live Demo](https://your-demo-link.com) ← *(optional)*
+[View Live Demo](https://webecco.com/confirmjs/index.html) ← *(optional)*
 
 ## 📁 Installation
 
